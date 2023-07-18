@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="project-info-box mt-0">
+        <h5>{{item.title}}</h5>
+        <p class="mb-0">{{'category.'+item.category | translate}}</p>
+      </div><!-- / project-info-box -->
+
+      <div class="project-info-box">
+        <div class="wrapper">
+          <img [src]="imageUrl" alt="" class="user-profile">
+        </div>
+        <p><b>Unternehmen: </b>{{item.owner.name}}</p>
+        <p><b>Adresse: </b>{{item.owner.address}}</p>
+        <p><b>Veröffentlicht am: </b>{{item.publishedAt}}</p>
+        <p><b>Telefonnummer: </b>{{item.owner.phoneNumber}}</p>
+        <p class="mb-0"><b>Preis: </b>{{item.price}} €</p>
+      </div><!-- / project-info-box -->
+
+      <div class="project-info-box mt-0">
+        <p class="mb-0">
+          <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
+          <a href="#x" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="#x" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
+          <a href="#x" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i
+              class="fab fa-pinterest"></i></a>
+          <a href="#x" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i
+              class="fab fa-linkedin-in"></i></a>
+        </p>
+      </div><!-- / project-info-box -->
+    </div><!-- / column -->
+
+    <div class="col-md-7">
+      <div class="project-info-box mt-0">
+        <div class="main-image">
+          <img *ngIf="item.images.length > 0" class="rounded"
+            [src]="replaceImageUrl(item.images[currentImageIndex].imageUrl)" alt="Main Image">
+        </div>
+
+        <div class="thumbnail-images justify-content-center">
+          <div *ngFor="let image of item.images; let i = index">
+            <img [src]="replaceImageUrl(image.imageUrl)" alt="Thumbnail Image" class="thumbnail-image"
+              (click)="setCurrentImage(i)">
+          </div>
+        </div>
+      </div>
+    </div><!-- / column -->
+
+    <div class="col-md-12">
+      <div class="project-info-box mt-0">
+        <h5>Beschreibung</h5>
+        <p class="mb-0">{{item.description}}</p>
+      </div><!-- / project-info-box -->
+    </div>
+  </div>
+</div>
+
+<!--
+Mit license
+
+Copyright © 2023
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->

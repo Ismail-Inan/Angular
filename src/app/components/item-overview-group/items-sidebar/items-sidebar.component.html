@@ -1,0 +1,98 @@
+<div class="sidebar">
+    <div class="widget border-0">
+        <form #searchForm="ngForm" (ngSubmit)="search(searchForm.value.name)" class="d-flex" role="search">
+            <input type="search" name="name" ngModel class="form-control me-2" placeholder="suche"
+             [(ngModel)]="searchText" aria-label="Search">
+            <button class="btn btn-success" (click)="setSearchText(searchText)" type="submit">Suchen</button>
+        </form>
+        <div class="search">
+
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widget-title widget-collapse">
+            <h6>Date Posted</h6>
+            <a class="ml-auto" data-toggle="collapse" href="#dateposted" role="button" aria-expanded="false"
+                aria-controls="dateposted"> <i class="fas fa-chevron-down"></i> </a>
+        </div>
+        <div class="collapse show" id="dateposted">
+            <div class="widget-content">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="dateposted1">
+                    <label class="custom-control-label" for="dateposted1">Last hour</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="dateposted2">
+                    <label class="custom-control-label" for="dateposted2">Last 24 hour</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="dateposted3">
+                    <label class="custom-control-label" for="dateposted3">Last 7 days</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="dateposted4">
+                    <label class="custom-control-label" for="dateposted4">Last 14 days</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="dateposted5">
+                    <label class="custom-control-label" for="dateposted5">Last 30 days</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widget-title widget-collapse">
+            <h6>Kategorien</h6>
+            <a class="ml-auto" data-toggle="collapse" href="#specialism" role="button" aria-expanded="false"
+                aria-controls="specialism"> <i class="fas fa-chevron-down"></i> </a>
+        </div>
+        <div class="collapse show" id="specialism">
+            <div class="widget-content">
+                <ul>
+                    <li *ngIf="categoryFilter?.parent" (click)="selectCategory(categoryFilter?.parent)">
+                        <span class="parent-category">{{ 'category.' + categoryFilter?.parent | translate}}</span>
+                    </li>
+                    <li (click)="selectCategory(categoryFilter?.category)" class="selected-category">
+                        <span>{{ 'category.' + categoryFilter?.category | translate }}</span>
+                    </li>
+                    <li *ngFor="let child of categoryFilter?.children" (click)="selectCategory(child)">
+                        <span class="child-category">{{ 'category.' + child | translate}}</span>
+                        <i class="fas fa-angle-right"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widget-title widget-collapse">
+            <h6>Preis</h6>
+            <a class="ml-auto" data-toggle="collapse" href="#Offeredsalary" role="button" aria-expanded="false"
+                aria-controls="Offeredsalary"> <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        <div class="collapse show" id="Offeredsalary">
+            <div class="widget-content">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <label for="fromPrice">From:</label>
+                        <input type="number" id="fromPrice" class="form-control" [(ngModel)]="minPrice"
+                        (input)="setMinPrice(minPrice)">
+                    </div>
+                    <div class="mx-2">-</div>
+                    <div>
+                        <label for="toPrice">To:</label>
+                        <input type="number" id="toPrice" class="form-control" [(ngModel)]="maxPrice"
+                        (input)="setMaxPrice(maxPrice)">
+                    </div>
+                </div>
+
+                <div class="custom-control custom-checkbox pt-2">
+                    <input [(ngModel)]="forFree" type="checkbox" class="custom-control-input" id="forFree"
+                        (ngModelChange)="setForFree(forFree)">
+                    <label class="custom-control-label" for="forFree">{{'forFree' | translate}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

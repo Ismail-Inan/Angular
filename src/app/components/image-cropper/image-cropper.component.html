@@ -1,0 +1,40 @@
+<mat-dialog-content>
+    <h4>Profilbild ändern</h4>
+
+    <ngx-awesome-uploader [adapter]="adapter"
+    [enableCropper]="true"
+    [fileMaxSize]="200">
+    </ngx-awesome-uploader>
+
+    <!-- File Input -->
+    <input class="form-control" multiple accept="image/*" type="file" (change)="fileChangeEvent($event)">
+
+    <!-- Dialog Content -->
+    <div class="image-cropper-dialog">
+        <div class="image-cropper-wrapper">
+            <image-cropper [imageURL]="image" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [resizeToWidth]="256"
+                [cropperMinWidth]="128" [onlyScaleDown]="true" [roundCropper]="true" [canvasRotation]="canvasRotation"
+                [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png"
+                (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()"></image-cropper>
+        </div>
+
+        <h5>Vorschau:</h5>
+        <div class="avatar-container">
+            <div class="image-container" [ngClass]="{'box-shadow-avatar': !!croppedImage}"
+                [ngStyle]="{backgroundImage: 'url(' + croppedImage + ')'}"
+                [style.border]="croppedImage ? '1px solid black' : 'none'">
+            </div>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <div class="button-wrapper">
+        <button class="btn btn-secondary" mat-dialog-close tabindex="-1">Abbrechen</button>
+        <button class="btn btn-primary" type="button" (click)="saveImage()">Speichern</button>
+    </div>
+</mat-dialog-actions>

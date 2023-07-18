@@ -1,0 +1,70 @@
+{
+    "categories": [
+      {
+        "category": "ALL",
+        "children": [
+          {
+            "category": "PHONES",
+            "children": [
+              {
+                "category": "SAMSUNG",
+                "children": [
+                  "S21",
+                  "S23"
+                ]
+              },
+              "APPLE"
+            ]
+          },
+          {
+            "category": "COMPUTER",
+            "children": []
+          },
+          {
+            "category": "GARDENING",
+            "children": []
+          },
+          {
+            "category": "ACCESSORIES",
+            "children": []
+          },
+          {
+            "category": "JEWELRY",
+            "children": []
+          },
+          {
+            "category": "CARS",
+            "children": []
+          },
+          {
+            "category": "TRANSPORT",
+            "children": []
+          },
+          {
+            "category": "MOVING",
+            "children": []
+          },
+          {
+            "category": "BEAUTY_CARE",
+            "children": []
+          },
+          {
+            "category": "CRAFTSMAN",
+            "children": []
+          },
+          {
+            "category": "SPORT",
+            "children": []
+          },
+          {
+            "category": "CLOTHING",
+            "children": [
+              "MEN",
+              "WOMEN"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

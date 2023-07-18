@@ -1,0 +1,11 @@
+<div style="min-height: 70vh;
+height: auto;
+margin: 0;">
+
+    <navigation></navigation>
+
+    <router-outlet *ngIf="!showErrorMessage"></router-outlet>
+    <app-error-page *ngIf="showErrorMessage"></app-error-page>
+
+    <app-footer />
+</div>

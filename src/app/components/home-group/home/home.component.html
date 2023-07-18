@@ -1,0 +1,47 @@
+<!-- Header-->
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container px-5">
+            <h1 class="masthead-heading mb-0">Die besten Angebote auf Marktplatz.at</h1>
+            <h2 class="masthead-subheading mb-0">Worauf wartest du?</h2>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<nav>
+    <ul class="main-menu">
+        <li><a routerLink="/itemsOverview">Alle Angebote</a></li>
+        <li><a (click)="navigateToCategory('PHONES')">Handys</a></li>
+        <li><a (click)="navigateToCategory('CARS')">KFZ</a></li>
+        <li><a (click)="navigateToCategory('TRANSPORT')">Transport</a></li>
+        <li><a (click)="navigateToCategory('GARDENING')">Gärtnerei</a></li>
+        <li><a (click)="navigateToCategory('CRAFTSMEN')">Handwerker</a></li>
+    </ul>
+</nav>
+
+<!-- Page content-->
+<div class="container">
+    <div class="text-center mt-5 mb-5">
+        <div>
+            <form #searchForm="ngForm" (ngSubmit)="goToItemsOverviewAndSearch(searchForm.value.name)" class="d-flex"
+                role="search">
+                <input type="search" name="name" ngModel class="form-control me-2" placeholder="Samsung S23"
+                    aria-label="Search">
+                <button class="btn btn-success" type="submit">Suchen</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-items-row title="{{ 'newest' | translate }}" [items]="latestItems">
+</app-items-row>
+
+<app-items-row *ngIf="lastViewedItems?.length > 0" title="{{ 'lastViewed' | translate }}"
+    [items]="lastViewedItems"></app-items-row>
+
+<app-items-row title="{{ 'mostPopular' | translate }}">
+</app-items-row>

@@ -1,0 +1,115 @@
+<ng-container *ngIf="(usersState$ | async) as state" [ngSwitch]="state.appState">
+
+    <div *ngIf="loadingService.isLoading$ | async" class="spinner-border" role="status" style="color: #0773d0;position: fixed;
+    top: 60px;
+    right: 360px;
+    z-index:1000">
+        <span class="sr-only"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="container">
+                <div class="row">
+                    <ng-container *ngSwitchCase="'APP_ERROR'">
+                        {{ state.error | json }}
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'APP_LOADING'">
+                        <div class="d-flex justify-content-center mt-4">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'APP_LOADED'">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h6 class="mb-0">Showing 1-10 of <span class="text-primary">28 Candidates</span></h6>
+                            </div>
+                        </div>
+                        <div class="job-filter mb-4 d-sm-flex align-items-center">
+                            <div class="job-alert-bt"> <a class="btn btn-md btn-dark" href="#"><i
+                                        class="fa fa-envelope"></i>Get job
+                                    alert </a> </div>
+                            <div class="job-shortby ml-sm-auto d-flex align-items-center">
+                                <form class="form-inline">
+                                    <div class="form-group mb-0">
+                                        <label class="justify-content-start mr-2">Sort by :</label>
+                                        <div class="short-by">
+                                            <select class="form-control basic-select select2-hidden-accessible"
+                                                data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                                <option data-select2-id="3">Newest</option>
+                                                <option>Oldest</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div *ngFor="let userItem of state.appData?.data?.page.content; let i = index;"
+                                class="col-sm-6 col-lg-4 mb-4" (click)="showSelectedItem(userItem)">
+                                <div class="candidate-list candidate-grid">
+                                    <div class="candidate-list-image">
+                                        <img class="img-fluid" [src]="replaceImageUrl(userItem.thumbnail.imageUrl)"
+                                            alt="">
+                                    </div>
+                                    <div class="candidate-list-details">
+                                        <div class="row candidate-list-info">
+                                            <div class="col candidate-list-title">
+                                                <h6>{{userItem.title}}</h6>
+                                            </div>
+                                            <div class="col candidate-list-option">
+                                                <ul class="list-unstyled">
+                                                    <li><i class="fas fa-map-marker-alt pr-1"></i>{{userItem?.price}} €
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="candidate-list-favourite-time">
+                                            {{userItem?.description}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="state.appData?.data?.page.content.length < 1" class="alert alert-secondary"
+                            role="alert">
+                            Es wurden leider keine Angebote gefunden.
+                        </div>
+
+                        <div class="row" *ngIf="state.appData?.data?.page.content.length > 0">
+                            <div class="col-12 text-center mt-2 mt-sm-2">
+                                <ul class="pagination justify-content-center mb-0">
+                                    <li class="page-item pointer"
+                                        [ngClass]="0 == (currentPage$ | async) ? ' disabled' : ''">
+                                        <a (click)="goToNextOrPreviousPage('backward')" class="page-link"
+                                            aria-label="Previous">
+                                            <span aria-hidden="true">&laquo; Previous</span>
+                                        </a>
+                                    </li>
+                                    <li *ngFor="let pageNumber of [].constructor(state.appData.data.page.totalPages); let i = index;"
+                                        class="page-item pointer"
+                                        [ngClass]="i == (currentPage$ | async) ? ' active' : ''">
+                                        <a (click)="goToPage(i)" class="page-link">
+                                            {{ i + 1 }}
+                                        </a>
+                                    </li>
+                                    <li class="page-item pointer"
+                                        [ngClass]="(state.appData.data.page.totalPages - 1) == (currentPage$ | async) ? ' disabled' : ''">
+                                        <a (click)="goToNextOrPreviousPage('forward')" class="page-link"
+                                            aria-label="Next">
+                                            <span aria-hidden="true">Next &raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

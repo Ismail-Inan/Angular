@@ -1,0 +1,59 @@
+{
+  "name": "marketplaceapp",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^16.0.1",
+    "@angular/cdk": "^16.0.1",
+    "@angular/common": "^16.0.1",
+    "@angular/compiler": "^16.0.1",
+    "@angular/core": "^16.0.1",
+    "@angular/forms": "^16.0.1",
+    "@angular/material": "^16.0.1",
+    "@angular/platform-browser": "^16.0.1",
+    "@angular/platform-browser-dynamic": "^16.0.1",
+    "@angular/router": "^16.0.1",
+    "@auth0/angular-jwt": "^5.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.3.0",
+    "cropperjs": "^1.5.13",
+    "ng2-charts": "^4.1.1",
+    "ngx-awesome-uploader": "^15.0.0",
+    "ngx-cookie-service": "^16.0.0",
+    "ngx-image-cropper": "^6.3.3",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.4.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.0.1",
+    "@angular/cli": "~16.0.1",
+    "@angular/compiler-cli": "^16.0.1",
+    "@angular/localize": "^16.0.1",
+    "@types/jasmine": "~4.3.0",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~4.9.4"
+  },
+  "styles": [
+    "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+    "node_modules/primeng/resources/primeng.min.css"
+  ]
+}

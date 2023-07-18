@@ -1,0 +1,73 @@
+<p-toast></p-toast>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="payments" role="tabpanel" aria-labelledby="payments-tab">
+                        <h4 class="font-weight-bold mt-0 mb-4">Meine Angebote</h4>
+
+                        <div class="job-filter mb-4 d-sm-flex align-items-center">
+                            <div class="job-shortby ml-sm-auto d-flex align-items-center">
+                                <form class="form-inline">
+                                    <div class="form-group mb-0">
+                                        <label class="justify-content-start mr-2">Sort by :</label>
+                                        <div class="short-by">
+                                            <select class="form-control basic-select select2-hidden-accessible"
+                                                data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                                <option value="newest" data-select2-id="3">Neueste</option>
+                                                <option value="oldest">Älteste</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div *ngFor="let userItem of items; let i = index;" class="col-sm-6 col-lg-4 mb-4">
+                                <div class="bg-white card payments-item mb-4 shadow-sm candidate-list candidate-grid">
+                                    <div class="candidate-list-image" (click)="showSelectedItem(userItem)">
+                                        <img class="img-fluid" [src]="replaceImageUrl(userItem.thumbnail.imageUrl)"
+                                            alt="">
+                                    </div>
+                                    <div class="candidate-list-details">
+                                        <div class="row candidate-list-info">
+                                            <div class="col candidate-list-title">
+                                                <h6>{{userItem.title}}</h6>
+                                            </div>
+                                            <div class="col candidate-list-option">
+                                                <ul class="list-unstyled">
+                                                    <li><i class="fas fa-map-marker-alt pr-1"></i>{{userItem?.price}} €
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="candidate-list-favourite-time row">
+                                            <div class="col d-flex justify-content-start">
+                                                <p-button  label="Bearbeiten"
+                                                styleClass="btn btn-primary" icon="pi pi-pencil"
+                                                    (click)="editItem(userItem)"></p-button>
+                                            </div>
+                                            <div class="col d-flex justify-content-end">
+                                                <p-button label="Löschen" styleClass="btn btn-primary p-button-danger"
+                                                    icon="pi pi-trash" (click)="deleteItem(userItem)"></p-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="items.length < 1" class="alert alert-secondary" role="alert">
+                            Es wurden leider keine Angebote gefunden.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

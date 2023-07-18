@@ -1,0 +1,84 @@
+/* Job Detail */
+.widget .jobster-company-view ul li {
+    border: 1px solid #eeeeee;
+    margin-bottom: 20px;
+}
+
+.widget .jobster-company-view ul li:last-child {
+    margin-bottom: 0;
+}
+
+.widget .jobster-company-view ul li span {
+    color: #212529;
+    -ms-flex-item-align: center;
+    align-self: center;
+    font-weight: 600;
+}
+
+.sidebar .widget {
+    border: 1px solid #eeeeee;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.sidebar .widget .widget-title {
+    border-bottom: 1px solid #eeeeee;
+    padding: 14px 20px;
+}
+
+.sidebar .widget .widget-content {
+    padding: 14px 20px;
+}
+
+.widget .widget-content {
+    margin-top: 10px;
+}
+
+.selected-category {
+    background-color: #f0f0f0;
+    /* Add any other styling properties */
+}
+
+.widget {
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .widget-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .widget-title h6 {
+    margin: 0;
+  }
+  
+  .widget-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .widget-content ul li {
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .widget-content ul li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .widget-content ul li .parent-category {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .widget-content ul li .child-category {
+    margin-left: 10px;
+  }
